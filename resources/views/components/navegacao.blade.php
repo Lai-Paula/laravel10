@@ -1,6 +1,7 @@
  <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-body-tertiary sidebar collapse">
      <div class="position-sticky pt-3 sidebar-sticky">
          <ul class="nav flex-column">
+            
              <li class="nav-item">
                  <a class="nav-link" href=" {{ route('vendas.index') }}">
                      <span data-feather="file" class="align-text-bottom"></span>
