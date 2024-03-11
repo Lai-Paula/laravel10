@@ -31,12 +31,12 @@ class VendaController extends Controller
 
     public function cadastrarVendas(FormRequestVenda $request)
     {
-        $findNumeracao = Venda::max('numero_da_venda') + 1;
+        $findNumeracao = Venda::max('numero_da_venda') + 1; // oq tiver mais 1
         $findProduto =  Produto::all();
         $findCliente =  Cliente::all();
 
         if ($request->method() == "POST") {
-            // cria os dados
+           
             $data = $request->all();
             $data['numero_da_venda'] = $findNumeracao;
 
@@ -45,7 +45,7 @@ class VendaController extends Controller
             Toastr::success('Dados gravados com sucesso.');
             return redirect()->route('vendas.index');
         }
-        // mostrar os dados
+      
 
         return view('pages.vendas.create', compact('findNumeracao', 'findProduto', 'findCliente'));
     }
@@ -62,7 +62,7 @@ class VendaController extends Controller
             'clienteNome' => $clienteNome
         ];
 
-        Mail::to($clienteEmail)->send(new ComprovanteDeVendaEmail($sendMailData));
+        Mail::to($clienteEmail)->send(new ComprovanteDeVendaEmail($sendMailData)); 
 
         Toastr::success('Email enviado com sucesso.');
         return redirect()->route('vendas.index');

@@ -17,7 +17,7 @@ class Venda extends Model
 
     public function produto()
     {
-        return $this->belongsTo(Produto::class);
+        return $this->belongsTo(Produto::class); // depende
     }
 
     public function cliente()

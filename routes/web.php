@@ -41,10 +41,8 @@ Route::prefix('produtos')->group(function () {
 
 Route::prefix('clientes')->group(function () {
     Route::get('/', [ClientesController::class, 'index'])->name('clientes.index');
-    //Cadastro Create
     Route::get('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
     Route::post('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
-    //Atualiza Update
     Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
     Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
     Route::delete('/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
