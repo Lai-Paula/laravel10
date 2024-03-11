@@ -30,7 +30,7 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro) {
 $('#mascara_valor').mask('#.##0,00', { reverse: true });
 
 
-$("#cep").blur(function () {
+$("#cep").blur(function () { // busca do cep
     var cep = $(this).val().replace(/\D/g, '');
     if (cep != "") {
         var validacep = /^[0-9]{8}$/;

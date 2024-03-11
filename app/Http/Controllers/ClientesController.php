@@ -6,6 +6,7 @@ use App\Http\Requests\FormRequestClientes;
 use App\Models\Cliente;
 use App\Models\Componentes;
 use Brian2694\Toastr\Facades\Toastr;
+use Brian2694\Toastr\Toastr as ToastrToastr;
 use Illuminate\Http\Request;
 
 class ClientesController extends Controller
@@ -37,7 +38,6 @@ class ClientesController extends Controller
     public function cadastrarCliente(FormRequestClientes $request)
     {
         if ($request->method() == "POST") {
-            // cria os dados
             $data = $request->all();
             Cliente::create($data);
 
@@ -51,7 +51,6 @@ class ClientesController extends Controller
     public function atualizarCliente(FormRequestClientes $request, $id)
     {
         if ($request->method() == "PUT") {
-            // atualiza os dados
             $data = $request->all();
             $buscaRegistro = Cliente::find($id);
             $buscaRegistro->update($data);
