@@ -21,53 +21,53 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::prefix('dashboard')->group(function () {
-   Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
-});
+Route::middleware('auth')->group(function () {
 
-Route::prefix('produtos')->group(function () {
-    Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
-    //Cadastro Create
-    Route::get('/cadastrarProduto', [ProdutosController::class, 'cadastrarProduto'])->name('cadastrar.produto');
-    Route::post('/cadastrarProduto', [ProdutosController::class, 'cadastrarProduto'])->name('cadastrar.produto');
-    //Atualiza Update
-    Route::get('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
-    Route::put('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
-    Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
-});
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
+     });
 
-Route::prefix('clientes')->group(function () {
-    Route::get('/', [ClientesController::class, 'index'])->name('clientes.index');
-    Route::get('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
-    Route::post('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
-    Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
-    Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
-    Route::delete('/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
-});
+     Route::prefix('produtos')->group(function () {
+        Route::get('/', [ProdutosController::class, 'index'])->name('produto.index');
+        //Cadastro Create
+        Route::get('/cadastrarProduto', [ProdutosController::class, 'cadastrarProduto'])->name('cadastrar.produto');
+        Route::post('/cadastrarProduto', [ProdutosController::class, 'cadastrarProduto'])->name('cadastrar.produto');
+        //Atualiza Update
+        Route::get('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
+        Route::put('/atualizarProduto/{id}', [ProdutosController::class, 'atualizarProduto'])->name('atualizar.produto');
+        Route::delete('/delete', [ProdutosController::class, 'delete'])->name('produto.delete');
+    });
 
-Route::prefix('vendas')->group(function () {
-    Route::get('/', [VendaController::class, 'index'])->name('vendas.index');
-    //Cadastro Create
-    Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVendas'])->name('cadastrar.venda');
-    Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVendas'])->name('cadastrar.venda');
-    Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
-});
+    Route::prefix('clientes')->group(function () {
+        Route::get('/', [ClientesController::class, 'index'])->name('clientes.index');
+        Route::get('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+        Route::post('/cadastrarCliente', [ClientesController::class, 'cadastrarCliente'])->name('cadastrar.cliente');
+        Route::get('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+        Route::put('/atualizarCliente/{id}', [ClientesController::class, 'atualizarCliente'])->name('atualizar.cliente');
+        Route::delete('/delete', [ClientesController::class, 'delete'])->name('cliente.delete');
+    });
 
-Route::prefix('usuario')->group(function () {
-    Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
-    Route::get('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
-    Route::post('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
-    //Atualiza Update
-    Route::get('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
-    Route::put('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
-    Route::delete('/delete', [UsuarioController::class, 'delete'])->name('usuario.delete');
-});
+    Route::prefix('vendas')->group(function () {
+        Route::get('/', [VendaController::class, 'index'])->name('vendas.index');
+        //Cadastro Create
+        Route::get('/cadastrarVenda', [VendaController::class, 'cadastrarVendas'])->name('cadastrar.venda');
+        Route::post('/cadastrarVenda', [VendaController::class, 'cadastrarVendas'])->name('cadastrar.venda');
+        Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
+    });
 
-Route::middleware('auth')->group(function (){
+    Route::prefix('usuario')->group(function () {
+        Route::get('/', [UsuarioController::class, 'index'])->name('usuario.index');
+        Route::get('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
+        Route::post('/cadastrarUsuario', [UsuarioController::class, 'cadastrarUsuario'])->name('cadastrar.usuario');
+        //Atualiza Update
+        Route::get('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+        Route::put('/atualizarUsuario/{id}', [UsuarioController::class, 'atualizarUsuario'])->name('atualizar.usuario');
+        Route::delete('/delete', [UsuarioController::class, 'delete'])->name('usuario.delete');
+    });
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
 
 require __DIR__ . '/auth.php';
