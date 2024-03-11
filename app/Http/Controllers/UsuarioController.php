@@ -37,7 +37,6 @@ class UsuarioController extends Controller
     public function cadastrarUsuario(UsuarioFormRequest $request)
     {
         if ($request->method() == "POST") {
-            // cria os dados
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
             User::create($data);
@@ -52,7 +51,6 @@ class UsuarioController extends Controller
     public function atualizarUsuario(UsuarioFormRequest $request, $id)
     {
         if ($request->method() == "PUT") {
-            // atualiza os dados
             $data = $request->all();
             $data['password'] = Hash::make($data['password']);
             $buscaRegistro = User::find($id);
