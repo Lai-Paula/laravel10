@@ -20,12 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//Route::prefix('dashboard')->group(function () {
-//    Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
-//});
-Route::get('/', function (){
-    return view('index');
-
+Route::prefix('dashboard')->group(function () {
+   Route::get('/', [DashbordController::class, 'index'])->name('dashboard.index');
 });
 
 Route::prefix('produtos')->group(function () {
