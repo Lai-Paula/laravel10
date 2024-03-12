@@ -7,7 +7,7 @@
     </div>
     <div>
         <form action="{{ route('vendas.index') }}" method="get">
-            <input type="text" name="pesquisar" placeholder="Digite o nome" />
+            <input type="text" name="pesquisar" placeholder="Digite a numeração" />
             <button> Pesquisar </button>
             <a type="button" href="{{ route('cadastrar.venda') }}" class="btn btn-success float-end">
                 Incluir Venda
